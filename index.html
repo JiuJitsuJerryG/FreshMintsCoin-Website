@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreshMintsCoin - The Original REFRESHING Meme Coin on Solana</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        /* Font imports */
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700&family=Quicksand:wght@400;500;700&display=swap');
+
+        /* Variables */
+        :root {
+            --peppermint-red: #FF0000;
+            --pure-white: #FFFFFF;
+            --mint-green: #98FF98;
+            --pastel-green: #C2FFC1;
+            --bright-pink: #F9ACFC;
+            --periwinkle-blue: #6E6CFF;
+            --pale-yellow: #FFFEA5;
+            --coral: #FF7575;
+            --light-blue-green: #6ED3CF;
+            --soft-purple: #9068BE;
+        }
+
+        body {
+            background-color: var(--pure-white);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Fredoka One', cursive;
+            color: var(--peppermint-red);
+        }
+
+        p {
+            font-family: 'Quicksand', sans-serif;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        /* Candy Path Background */
+        .candy-path {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--mint-green), var(--pastel-green));
+            padding: 1rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-text {
+            font-size: 2rem;
+            margin-left: 1rem;
+            color: var(--peppermint-red);
+            text-shadow: 2px 2px 0 rgba(255, 255, 255, 0.5);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            color: var(--peppermint-red);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            color: var(--soft-purple);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--peppermint-red);
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--peppermint-red);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(45deg, var(--pastel-green), var(--mint-green));
+            padding: 4rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--peppermint-red);
+            text-shadow: 3px 3px 0 rgba(255, 255, 255, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            background: var(--peppermint-red);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(255, 0, 0, 0.3);
+            margin: 0 0.5rem 1rem;
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(255, 0, 0, 0.4);
+        }
+
+        .hero-btn.secondary {
+            background: var(--periwinkle-blue);
+            box-shadow: 0 4px 10px rgba(110, 108, 255, 0.3);
+        }
+
+        .hero-btn.secondary:hover {
+            box-shadow: 0 6px 15px rgba(110, 108, 255, 0.4);
+        }
+
+        /* Candy Characters */
+        .candy-characters {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .peppermint-character {
+            position: absolute;
+            bottom: -20px;
+            left: 5%;
+            width: 150px;
+            height: 150px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .spearmint-character {
+            position: absolute;
+            bottom: -20px;
+            right: 5%;
+            width: 150px;
+            height: 150px;
+            animation: float 6s ease-in-out infinite 1s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+        }
+
+        /* About Section */
+        .about {
+            padding: 4rem 1rem;
+            background-color: var(--pure-white);
+            position: relative;
+        }
+
+        .about-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            padding: 1rem;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .about h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .about h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100px;
+            height: 5px;
+            background: linear-gradient(to right, var(--peppermint-red), var(--mint-green));
+            border-radius: 10px;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 4rem 1rem;
+            background: linear-gradient(135deg, var(--pale-yellow), var(--pastel-green));
+            position: relative;
+        }
+
+        .features-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .features h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--peppermint-red);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--pure-white);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--peppermint-red), var(--mint-green));
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--peppermint-red);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--mint-green);
+        }
+
+        /* Token Info Section */
+        .token-info {
+            padding: 4rem 1rem;
+            background-color: var(--pure-white);
+        }
+
+        .token-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .token-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--peppermint-red);
+        }
+
+        .token-details {
+            background: linear-gradient(135deg, var(--mint-green), var(--pastel-green));
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .token-details h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--peppermint-red);
+        }
+
+        .token-address {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            word-break: break-all;
+            font-family: monospace;
+            font-size: 1rem;
+        }
+
+        .copy-btn {
+            background: var(--peppermint-red);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 700;
+            margin-top: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background: var(--coral);
+        }
+
+        /* Community Section */
+        .community {
+            padding: 4rem 1rem;
+            background: linear-gradient(135deg, var(--bright-pink), var(--soft-purple));
+            color: var(--pure-white);
+        }
+
+        .community-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .community h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--pure-white);
+        }
+
+        .community p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: var(--pure-white);
+            border-radius: 50%;
+            color: var(--soft-purple);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* DAO Section */
+        .dao-section {
+            padding: 4rem 1rem;
+            background-color: var(--pure-white);
+        }
+
+        .dao-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .dao-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--peppermint-red);
+        }
+
+        .dao-card {
+            background: linear-gradient(135deg, var(--light-blue-green), var(--periwinkle-blue));
+            border-radius: 20px;
+            padding: 2rem;
+            color: var(--pure-white);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .dao-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--pure-white);
+        }
+
+        .dao-btn {
+            display: inline-block;
+            background: var(--pure-white);
+            color: var(--periwinkle-blue);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            margin-top: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .dao-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--peppermint-red), var(--coral));
+            color: var(--pure-white);
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-family: 'Fredoka One', cursive;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .footer-links a {
+            color: var(--pure-white);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--pale-yellow);
+        }
+
+        .copyright {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Animations */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* Candy Swirl Background */
+        .candy-swirl {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: repeating-linear-gradient(
+                45deg,
+                rgba(255, 0, 0, 0.05) 0px,
+                rgba(255, 0, 0, 0.05) 20px,
+                rgba(255, 255, 255, 0.05) 20px,
+                rgba(255, 255, 255, 0.05) 40px
+            );
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .logo-container {
+                margin-bottom: 1rem;
+                justify-content: center;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .peppermint-character,
+            .spearmint-character {
+                width: 100px;
+                height: 100px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+            }
+
+            nav {
+                display: none;
+            }
+
+            nav.active {
+                display: block;
+                width: 100%;
+            }
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            background: var(--mint-green);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+        }
+
+        .mobile-menu ul li {
+            margin: 0.8rem 0;
+        }
+
+        .mobile-menu ul li a {
+            color: var(--peppermint-red);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: block;
+            padding: 0.5rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu ul li a:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <!-- Candy Path Background -->
+    <div class="candy-path"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="candy-swirl"></div>
+        <div class="header-content">
+            <div class="logo-container">
+                <svg width="50" height="50" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" fill="#FFFFFF" stroke="#FF0000" stroke-width="5" />
+                    <path d="M50,5 Q65,25 50,45 Q35,25 50,5" fill="#FF0000" />
+                    <path d="M50,45 Q65,65 50,85 Q35,65 50,45" fill="#FF0000" />
+                    <path d="M5,50 Q25,35 45,50 Q25,65 5,50" fill="#FF0000" />
+                    <path d="M45,50 Q65,35 85,50 Q65,65 45,50" fill="#FF0000" />
+                </svg>
+                <h1 class="logo-text">FreshMintsCoin</h1>
+            </div>
+            <button class="mobile-menu-btn">☰</button>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#token">Token</a></li>
+                    <li><a href="#dao">DAO</a></li>
+                    <li><a href="#community">Community</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="mobile-menu">
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#token">Token</a></li>
+                <li><a href="#dao">DAO</a></li>
+                <li><a href="#community">Community</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="candy-swirl"></div>
+        <div class="candy-characters">
+            <!-- Peppermint Character -->
+            <svg class="peppermint-character" viewBox="0 0 200 200">
+                <!-- Body -->
+                <circle cx="100" cy="100" r="80" fill="#FFFFFF" stroke="#FF0000" stroke-width="5" />
+                
+                <!-- Peppermint Stripes -->
+                <path d="M100,20 Q130,50 100,100 Q70,50 100,20" fill="#FF0000" />
+                <path d="M100,100 Q130,150 100,180 Q70,150 100,100" fill="#FF0000" />
+                <path d="M20,100 Q50,70 100,100 Q50,130 20,100" fill="#FF0000" />
+                <path d="M100,100 Q150,70 180,100 Q150,130 100,100" fill="#FF0000" />
+                
+                <!-- Eyes -->
+                <circle cx="70" cy="80" r="10" fill="#FFFFFF" stroke="#000000" stroke-width="2" />
+                <circle cx="130" cy="80" r="10" fill="#FFFFFF" stroke="#000000" stroke-width="2" />
+                <circle cx="70" cy="80" r="5" fill="#000000" />
+                <circle cx="130" cy="80" r="5" fill="#000000" />
+                
+                <!-- Smile -->
+                <path d="M70,120 Q100,140 130,120" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" />
+                
+                <!-- Blush -->
+                <circle cx="60" cy="105" r="8" fill="#FF9999" opacity="0.6" />
+                <circle cx="140" cy="105" r="8" fill="#FF9999" opacity="0.6" />
+                
+                <!-- Arms -->
+                <path d="M30,100 Q10,90 5,70" fill="none" stroke="#FF0000" stroke-width="5" stroke-linecap="round" />
+                <path d="M170,100 Q190,90 195,70" fill="none" stroke="#FF0000" stroke-width="5" stroke-linecap="round" />
+                
+                <!-- Legs -->
+                <path d="M70,170 Q60,190 50,195" fill="none" stroke="#FF0000" stroke-width="5" stroke-linecap="round" />
+                <path d="M130,170 Q140,190 150,195" fill="none" stroke="#FF0000" stroke-width="5" stroke-linecap="round" />
+            </svg>
+            
+            <!-- Spearmint Character -->
+            <svg class="spearmint-character" viewBox="0 0 200 200">
+                <!-- Body -->
+                <circle cx="100" cy="100" r="80" fill="#FFFFFF" stroke="#98FF98" stroke-width="5" />
+                
+                <!-- Spearmint Swirls -->
+                <path d="M100,20 C130,40 70,60 100,80 C130,100 70,120 100,140 C130,160 70,180 100,180" fill="none" stroke="#98FF98" stroke-width="10" stroke-linecap="round" />
+                <path d="M20,100 C40,70 60,130 80,100 C100,70 120,130 140,100 C160,70 180,130 180,100" fill="none" stroke="#98FF98" stroke-width="10" stroke-linecap="round" />
+                
+                <!-- Eyes -->
+                <circle cx="70" cy="80" r="10" fill="#FFFFFF" stroke="#000000" stroke-width="2" />
+                <circle cx="130" cy="80" r="10" fill="#FFFFFF" stroke="#000000" stroke-width="2" />
+                <circle cx="70" cy="80" r="5" fill="#000000" />
+                <circle cx="130" cy="80" r="5" fill="#000000" />
+                
+                <!-- Smile -->
+                <path d="M70,120 Q100,140 130,120" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" />
+                
+                <!-- Blush -->
+                <circle cx="60" cy="105" r="8" fill="#98FF98" opacity="0.6" />
+                <circle cx="140" cy="105" r="8" fill="#98FF98" opacity="0.6" />
+                
+                <!-- Arms -->
+                <path d="M30,100 Q10,90 5,70" fill="none" stroke="#98FF98" stroke-width="5" stroke-linecap="round" />
+                <path d="M170,100 Q190,90 195,70" fill="none" stroke="#98FF98" stroke-width="5" stroke-linecap="round" />
+                
+                <!-- Legs -->
+                <path d="M70,170 Q60,190 50,195" fill="none" stroke="#98FF98" stroke-width="5" stroke-linecap="round" />
+                <path d="M130,170 Q140,190 150,195" fill="none" stroke="#98FF98" stroke-width="5" stroke-linecap="round" />
+            </svg>
+        </div>
+        <div class="hero-content">
+            <h1>The Original REFRESHING Meme Coin on Solana</h1>
+            <p>Be Fresh-Be Fun-Be Crypto Wise; Enjoy the REFRESHING MEME coin value of FreshMints!</p>
+            <div>
+                <a href="#token" class="hero-btn">Explore $MintCandy</a>
+                <a href="#dao" class="hero-btn secondary">Join CandyStore DAO</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>Not just another meme coin, but a movement</h2>
+                <p>FreshMintsCoin is powered by $MintCandy, a refreshing meme coin on the Solana blockchain that focuses on equitable financial inclusion and community empowerment.</p>
+                <p>Our mission is to foster a vibrant community that benefits from decentralized financial innovation while promoting inclusive financial participation for everyone.</p>
+                <p>With FreshMintsCoin, we're building more than just a cryptocurrency - we're creating a community-driven ecosystem that supports Solana projects and NFT artists.</p>
+            </div>
+            <div class="about-image">
+                <svg width="300" height="300" viewBox="0 0 300 300">
+                    <!-- Mint Leaf Background -->
+                    <path d="M150,50 C200,80 250,50 270,100 C290,150 250,200 200,220 C150,240 100,220 80,170 C60,120 100,70 150,50" fill="#C2FFC1" />
+                    
+                    <!-- Coin -->
+                    <circle cx="150" cy="150" r="80" fill="#FFFEA5" stroke="#FF7575" stroke-width="5" />
+                    
+                    <!-- Mint Symbol -->
+                    <text x="150" y="170" font-family="'Fredoka One', cursive" font-size="40" fill="#FF0000" text-anchor="middle">$MC</text>
+                    
+                    <!-- Sparkles -->
+                    <circle cx="100" cy="80" r="5" fill="#FFFFFF" />
+                    <circle cx="200" cy="80" r="5" fill="#FFFFFF" />
+                    <circle cx="100" cy="220" r="5" fill="#FFFFFF" />
+                    <circle cx="200" cy="220" r="5" fill="#FFFFFF" />
+                    <circle cx="80" cy="150" r="5" fill="#FFFFFF" />
+                    <circle cx="220" cy="150" r="5" fill="#FFFFFF" />
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="candy-swirl"></div>
+        <div class="features-content">
+            <h2>Project Objectives</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🌱</div>
+                    <h3>Community Empowerment</h3>
+                    <p>Building a strong, engaged community that actively participates in the growth and direction of FreshMintsCoin.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3>Financial Innovation</h3>
+                    <p>Fostering a vibrant community benefiting from decentralized financial innovation on the Solana blockchain.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤝</div>
+                    <h3>Inclusive Participation</h3>
+                    <p>Promoting inclusive financial participation for everyone, regardless of their background or experience level.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>Solana Investment</h3>
+                    <p>Investing in cutting-edge Solana projects to help grow the ecosystem and provide value to token holders.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Supporting Creators</h3>
+                    <p>Supporting Solana NFT artists and creators through community initiatives and direct funding.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🍬</div>
+                    <h3>Minty Fresh Vibes</h3>
+                    <p>Bringing refreshing energy to the crypto space with our unique mint-themed approach and community focus.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Token Info Section -->
+    <section id="token" class="token-info">
+        <div class="token-content">
+            <h2>$MintCandy Token</h2>
+            <div class="token-details">
+                <h3>Token Information</h3>
+                <p>$MintCandy is our primary token, described as "digital sweets" inspired by mint candies. It powers the entire FreshMintsCoin ecosystem.</p>
+                <div class="token-address">
+                    <strong>Contract Address:</strong><br>
+                    BzB9xddV1Xcdsu8TX11zJDRMmnaJiJnbEDnohvHpump
+                    <button class="copy-btn" onclick="copyToClipboard('BzB9xddV1Xcdsu8TX11zJDRMmnaJiJnbEDnohvHpump')">Copy</button>
+                </div>
+                <p>Recent token management activities include:</p>
+                <ul style="text-align: left; max-width: 500px; margin: 0 auto;">
+                    <li>Buying back 2.5M tokens weekly over 10 weeks</li>
+                    <li>Burning half the tokens for scarcity</li>
+                    <li>Locking half the tokens for one year</li>
+                    <li>73 Million $MintCandy tokens locked in FluxBeam Vault</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- DAO Section -->
+    <section id="dao" class="dao-section">
+        <div class="dao-content">
+            <h2>CandyStore DAO</h2>
+            <div class="dao-card">
+                <h3>$CSDAO - Community Governance</h3>
+                <p>CandyStore DAO ($CSDAO) is the governance token and community hub for FreshMintsCoin. It serves as the kickstart engine for our entire ecosystem.</p>
+                <p>Through CandyStore DAO, token holders can participate in community voting, shape the future of FreshMintsCoin, and support Solana NFT artists and creators.</p>
+                <a href="https://www.daos.fun/dao/AKnk98ZZptY5unKaFtaoKwzxj5TMwjW9E8rwWTpeHQ2H" target="_blank" class="dao-btn">Visit CandyStore DAO</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section id="community" class="community">
+        <div class="candy-swirl"></div>
+        <div class="community-content">
+            <h2>Join Our Community</h2>
+            <p>FreshMintsCoin is more than just a token - it's a vibrant community of crypto enthusiasts, artists, and innovators. Join us on our social platforms to stay updated on the latest news, participate in giveaways, and connect with fellow community members.</p>
+            <div class="social-links">
+                <a href="https://twitter.com/FreshMintsCoin" target="_blank" class="social-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
+                    </svg>
+                </a>
+                <a href="https://www.instagram.com/freshmintscoin" target="_blank" class="social-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+                <a href="https://www.reddit.com/r/MintCandy" target="_blank" class="social-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M24 11.779c0-1.459-1.192-2.645-2.657-2.645-.715 0-1.363.286-1.84.746-1.81-1.191-4.259-1.949-6.971-2.046l1.483-4.669 4.016.941-.006.058c0 1.193.975 2.163 2.174 2.163 1.198 0 2.172-.97 2.172-2.163s-.975-2.164-2.172-2.164c-.92 0-1.704.574-2.021 1.379l-4.329-1.015c-.189-.046-.381.063-.44.249l-1.654 5.207c-2.838.034-5.409.798-7.3 2.025-.474-.438-1.103-.712-1.799-.712-1.465 0-2.656 1.187-2.656 2.646 0 .97.533 1.811 1.317 2.271-.052.282-.086.567-.086.857 0 3.911 4.808 7.093 10.719 7.093s10.72-3.182 10.72-7.093c0-.274-.029-.544-.075-.81.832-.447 1.405-1.312 1.405-2.318zm-17.224 1.816c0-.868.71-1.575 1.582-1.575.872 0 1.581.707 1.581 1.575s-.709 1.574-1.581 1.574-1.582-.706-1.582-1.574zm9.061 4.669c-.797.793-2.048 1.179-3.824 1.179l-.013-.003-.013.003c-1.777 0-3.028-.386-3.824-1.179-.145-.144-.145-.379 0-.523.145-.145.381-.145.526 0 .65.647 1.729.961 3.298.961l.013.003.013-.003c1.569 0 2.648-.315 3.298-.962.145-.145.381-.144.526 0 .145.145.145.379 0 .524zm-.189-3.095c-.872 0-1.581-.706-1.581-1.574 0-.868.709-1.575 1.581-1.575s1.581.707 1.581 1.575-.709 1.574-1.581 1.574z"/>
+                    </svg>
+                </a>
+                <a href="https://linktr.ee/FreshMintsCoin" target="_blank" class="social-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7.953 15.066c-.08.163-.08.324-.08.486 0 .163.08.325.08.487.082.163.163.325.325.406.163.163.325.244.569.244.162 0 .324-.081.486-.163.163-.081.325-.243.406-.406.081-.162.162-.324.162-.487 0-.162-.081-.323-.162-.486-.081-.162-.243-.324-.406-.405-.162-.081-.324-.162-.486-.162-.244 0-.406.081-.569.162-.162.081-.243.243-.325.324zm8.669-8.996c-.081-.162-.243-.324-.406-.405-.162-.081-.324-.162-.486-.162-.244 0-.406.081-.569.162-.162.081-.243.243-.324.405-.082.163-.082.325-.082.487 0 .162.082.324.082.486.08.163.162.325.324.406.163.163.325.244.569.244.162 0 .324-.081.486-.163.163-.081.325-.243.406-.406.081-.162.162-.324.162-.486 0-.162-.081-.324-.162-.486zm-4.334 4.334c-.081-.162-.243-.324-.406-.405-.162-.081-.324-.162-.486-.162-.244 0-.406.081-.569.162-.162.081-.243.243-.324.405-.082.163-.082.325-.082.487 0 .162.082.324.082.486.08.163.162.325.324.406.163.162.325.243.569.243.162 0 .324-.081.486-.162.163-.081.325-.244.406-.406.081-.162.162-.324.162-.486 0-.162-.081-.324-.162-.486zm4.334-4.334c.081.162.081.324.081.486 0 .162-.081.324-.081.486-.082.163-.163.325-.325.406-.163.163-.325.244-.569.244-.162 0-.324-.081-.486-.163-.163-.081-.325-.243-.406-.406-.081-.162-.162-.324-.162-.486 0-.162.081-.324.162-.486.081-.162.243-.324.406-.405.162-.081.324-.162.486-.162.244 0 .406.081.569.162.162.081.243.243.325.324zm-4.334 0c-.081-.162-.243-.324-.406-.405-.162-.081-.324-.162-.486-.162-.244 0-.406.081-.569.162-.162.081-.243.243-.324.405-.082.163-.082.325-.082.487 0 .162.082.324.082.486.08.163.162.325.324.406.163.163.325.244.569.244.162 0 .324-.081.486-.163.163-.081.325-.243.406-.406.081-.162.162-.324.162-.486 0-.162-.081-.324-.162-.486zm-4.334 4.334c-.081-.162-.243-.324-.406-.405-.162-.081-.324-.162-.486-.162-.244 0-.406.081-.569.162-.162.081-.243.243-.324.405-.082.163-.082.325-.082.487 0 .162.082.324.082.486.08.163.162.325.324.406.163.162.325.243.569.243.162 0 .324-.081.486-.162.163-.081.325-.244.406-.406.081-.162.162-.324.162-.486 0-.162-.081-.324-.162-.486zm0-4.334c-.081-.162-.243-.324-.406-.405-.162-.081-.324-.162-.486-.162-.244 0-.406.081-.569.162-.162.081-.243.243-.324.405-.082.163-.082.325-.082.487 0 .162.082.324.082.486.08.163.162.325.324.406.163.163.325.244.569.244.162 0 .324-.081.486-.163.163-.081.325-.243.406-.406.081-.162.162-.324.162-.486 0-.162-.081-.324-.162-.486zm4.334 4.334c.081.162.081.324.081.486 0 .162-.081.324-.081.486-.082.163-.163.325-.325.406-.163.162-.325.243-.569.243-.162 0-.324-.081-.486-.162-.163-.081-.325-.244-.406-.406-.081-.162-.162-.324-.162-.486 0-.162.081-.324.162-.486.081-.162.243-.324.406-.405.162-.081.324-.162.486-.162.244 0 .406.081.569.162.162.081.243.243.325.405zm4.334 0c.081.162.081.324.081.486 0 .162-.081.324-.081.486-.082.163-.163.325-.325.406-.163.162-.325.243-.569.243-.162 0-.324-.081-.486-.162-.163-.081-.325-.244-.406-.406-.081-.162-.162-.324-.162-.486 0-.162.081-.324.162-.486.081-.162.243-.324.406-.405.162-.081.324-.162.486-.162.244 0 .406.081.569.162.162.081.243.243.325.405zm-8.669 0c.082.162.082.324.082.486 0 .162-.082.324-.082.486-.08.163-.162.325-.324.406-.163.162-.325.243-.569.243-.162 0-.324-.081-.486-.162-.163-.081-.325-.244-.406-.406-.081-.162-.162-.324-.162-.486 0-.162.081-.324.162-.486.081-.162.243-.324.406-.405.162-.081.324-.162.486-.162.244 0 .406.081.569.162.162.081.243.243.324.405zm0 4.334c.082.163.082.324.082.486 0 .163-.082.325-.082.487-.08.163-.162.325-.324.406-.163.163-.325.244-.569.244-.162 0-.324-.081-.486-.163-.163-.081-.325-.243-.406-.406-.081-.162-.162-.324-.162-.487 0-.162.081-.323.162-.486.081-.162.243-.324.406-.405.162-.081.324-.162.486-.162.244 0 .406.081.569.162.162.081.243.243.324.324zm4.334 0c.081.163.081.324.081.486 0 .163-.081.325-.081.487-.082.163-.163.325-.325.406-.163.163-.325.244-.569.244-.162 0-.324-.081-.486-.163-.163-.081-.325-.243-.406-.406-.081-.162-.162-.324-.162-.487 0-.162.081-.323.162-.486.081-.162.243-.324.406-.405.162-.081.324-.162.486-.162.244 0 .406.081.569.162.162.081.243.243.325.324zm4.334 0c.081.163.081.324.081.486 0 .163-.081.325-.081.487-.082.163-.163.325-.325.406-.163.163-.325.244-.569.244-.162 0-.324-.081-.486-.163-.163-.081-.325-.243-.406-.406-.081-.162-.162-.324-.162-.487 0-.162.081-.323.162-.486.081-.162.243-.324.406-.405.162-.081.324-.162.486-.162.244 0 .406.081.569.162.162.081.243.243.325.324z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">FreshMintsCoin</div>
+            <p>The Original REFRESHING Meme Coin on Solana</p>
+            <div class="footer-links">
+                <a href="#about">About</a>
+                <a href="#features">Features</a>
+                <a href="#token">Token</a>
+                <a href="#dao">DAO</a>
+                <a href="#community">Community</a>
+            </div>
+            <p class="copyright">© 2025 FreshMintsCoin. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.mobile-menu').classList.toggle('active');
+        });
+
+        // Copy to Clipboard Function
+        function copyToClipboard(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            
+            const copyBtn = document.querySelector('.copy-btn');
+            const originalText = copyBtn.textContent;
+            copyBtn.textContent = 'Copied!';
+            setTimeout(() => {
+                copyBtn.textContent = originalText;
+            }, 2000);
+        }
+
+        // Animate on Scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const animateElements = document.querySelectorAll('.feature-card, .token-details, .dao-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            animateElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(element);
+            });
+        });
+
+        // Create Candy Path Background
+        document.addEventListener('DOMContentLoaded', function() {
+            const candyPath = document.querySelector('.candy-path');
+            
+            // Create SVG for candy path
+            const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            svg.setAttribute('width', '100%');
+            svg.setAttribute('height', '100%');
+            
+            // Create a winding path
+            const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            path.setAttribute('d', 'M0,100 C100,50 200,150 300,100 C400,50 500,150 600,100 C700,50 800,150 900,100 C1000,50 1100,150 1200,100 C1300,50 1400,150 1500,100 C1600,50 1700,150 1800,100 C1900,50 2000,150 2100,100');
+            path.setAttribute('stroke', '#FF0000');
+            path.setAttribute('stroke-width', '10');
+            path.setAttribute('stroke-dasharray', '20,20');
+            path.setAttribute('fill', 'none');
+            path.setAttribute('opacity', '0.2');
+            
+            // Create another path with different color
+            const path2 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            path2.setAttribute('d', 'M0,300 C100,250 200,350 300,300 C400,250 500,350 600,300 C700,250 800,350 900,300 C1000,250 1100,350 1200,300 C1300,250 1400,350 1500,300 C1600,250 1700,350 1800,300 C1900,250 2000,350 2100,300');
+            path2.setAttribute('stroke', '#98FF98');
+            path2.setAttribute('stroke-width', '10');
+            path2.setAttribute('stroke-dasharray', '20,20');
+            path2.setAttribute('fill', 'none');
+            path2.setAttribute('opacity', '0.2');
+            
+            svg.appendChild(path);
+            svg.appendChild(path2);
+            candyPath.appendChild(svg);
+            
+            // Animate the paths
+            let offset = 0;
+            function animatePath() {
+                offset -= 1;
+                path.setAttribute('stroke-dashoffset', offset);
+                path2.setAttribute('stroke-dashoffset', -offset);
+                requestAnimationFrame(animatePath);
+            }
+            
+            animatePath();
+        });
+    </script>
+</body>
+</html>
